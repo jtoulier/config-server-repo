@@ -3,4 +3,4 @@ database:
     login: admin
     password: P@ssw0rd
     db-name: my-server-database
-saludo: {cipher}50c81f86b0c52f5530d78a336ec3cb442a36acdbbdc3737a04ff9321cb88634f
+saludo: '{cipher}50c81f86b0c52f5530d78a336ec3cb442a36acdbbdc3737a04ff9321cb88634f'
