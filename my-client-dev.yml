@@ -1,5 +1,5 @@
 database:
-    server: server-dev2
+    server: server-dev
     login: admin
     password: P@ssw0rd
     db-name: my-server-database
