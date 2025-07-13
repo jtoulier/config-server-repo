@@ -29,27 +29,27 @@ Este documento demuestra cómo estructurar un archivo Markdown con múltiples el
 
 ```mermaid
 sequenceDiagram
-participant Cliente
-participant API Validación
-participant Motor Crédito
-participant Sistema
-
-Cliente->>API Validación: Envía solicitud
-API Validación-->>Cliente: Datos validados
-
-alt Datos incompletos
-    API Validación-->>Cliente: Error: falta información
-    deactivate API Validación
-else Datos completos
-    API Validación->>Motor Crédito: Consulta estado financiero
-    loop Verificar múltiples cuentas
-        Motor Crédito->>Motor Crédito: Analiza cuenta[n]
+    participant Cliente
+    participant API Validación
+    participant Motor Crédito
+    participant Sistema
+    
+    Cliente->>API Validación: Envía solicitud
+    API Validación-->>Cliente: Datos validados
+    
+    alt Datos incompletos
+        API Validación-->>Cliente: Error: falta información
+        deactivate API Validación
+    else Datos completos
+        API Validación->>Motor Crédito: Consulta estado financiero
+        loop Verificar múltiples cuentas
+            Motor Crédito->>Motor Crédito: Analiza cuenta[n]
+        end
+        alt Crédito aprobado
+            Motor Crédito-->>Sistema: Enviar respuesta positiva
+            Sistema-->>Cliente: ¡Crédito aprobado!
+        else Crédito rechazado
+            Motor Crédito-->>Sistema: Enviar respuesta negativa
+            Sistema-->>Cliente: Lo sentimos, no aprobado
+        end
     end
-    alt Crédito aprobado
-        Motor Crédito-->>Sistema: Enviar respuesta positiva
-        Sistema-->>Cliente: ¡Crédito aprobado!
-    else Crédito rechazado
-        Motor Crédito-->>Sistema: Enviar respuesta negativa
-        Sistema-->>Cliente: Lo sentimos, no aprobado
-    end
-end
