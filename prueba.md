@@ -28,15 +28,6 @@ A continuación se enumeran algunas características importantes:
 Este documento demuestra cómo estructurar un archivo Markdown con múltiples elementos de formato. El uso adecuado de estos elementos mejora la legibilidad y comprensión del contenido.
 
 ```mermaid
-%%{init: {
-  "theme": "default",
-  "themeCSS": "
-    .actor:nth-of-type(1) rect { fill: #ffe0b2; stroke: #ef6c00; }
-    .actor:nth-of-type(2) rect { fill: #c8e6c9; stroke: #388e3c; }
-    .actor:nth-of-type(3) rect { fill: #bbdefb; stroke: #1565c0; }
-    .actor:nth-of-type(4) rect { fill: #f8bbd0; stroke: #ad1457; }
-  "
-}}%%
 sequenceDiagram
 participant Cliente
 participant API Validación
