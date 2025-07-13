@@ -28,27 +28,38 @@ A continuación se enumeran algunas características importantes:
 Este documento demuestra cómo estructurar un archivo Markdown con múltiples elementos de formato. El uso adecuado de estos elementos mejora la legibilidad y comprensión del contenido.
 
 ```mermaid
+%%{init: {'theme': 'default', 'themeVariables': { 'actorBorder': '#000000', 'actorBkg': '#D6EAF8', 'actorTextColor': '#000000', 'noteBkgColor': '#FCF3CF', 'noteTextColor': '#000000'}}}%%
+
 sequenceDiagram
-    participant Cliente
-    participant API Validación
-    participant Motor Crédito
-    participant Sistema
-    
-    Cliente->>API Validación: Envía solicitud
-    API Validación-->>Cliente: Datos validados
-    
-    alt Datos incompletos
-        API Validación-->>Cliente: Error: falta información
-    else Datos completos
-        API Validación->>Motor Crédito: Consulta estado financiero
-        loop Verificar múltiples cuentas
-            Motor Crédito->>Motor Crédito: Analiza cuenta[n]
-        end
-        alt Crédito aprobado
-            Motor Crédito-->>Sistema: Enviar respuesta positiva
-            Sistema-->>Cliente: ¡Crédito aprobado!
-        else Crédito rechazado
-            Motor Crédito-->>Sistema: Enviar respuesta negativa
-            Sistema-->>Cliente: Lo sentimos, no aprobado
-        end
+    participant Cliente as <font color=blue>Cliente</font>
+    participant Servidor as <font color=green>Servidor</font>
+    participant BD as <font color=purple>Base de Datos</font>
+
+    Note over Cliente,Servidor: Inicio de la solicitud
+
+    Cliente->>Servidor: Solicita datos
+    alt Datos en caché
+        Servidor-->>Cliente: Retorna datos desde caché
+    else Datos no disponibles
+        Servidor->>BD: Consulta datos
+        BD-->>Servidor: Retorna datos
+        Servidor-->>Cliente: Retorna datos consultados
     end
+
+    opt Validación adicional
+        Cliente->>Servidor: Enviar token de validación
+        Servidor-->>Cliente: Confirmación
+    end
+
+    loop Reintentos
+        Cliente->>Servidor: Reintento de solicitud
+    end
+
+    par Procesamiento paralelo
+        Servidor->>BD: Guardar log
+        Servidor->>Cliente: Confirmación de recepción
+    and
+        Servidor->>BD: Actualizar estadísticas
+    end
+
+    Note right of Cliente: Fin del proceso
