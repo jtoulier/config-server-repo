@@ -28,13 +28,17 @@ A continuación se enumeran algunas características importantes:
 Este documento demuestra cómo estructurar un archivo Markdown con múltiples elementos de formato. El uso adecuado de estos elementos mejora la legibilidad y comprensión del contenido.
 
 ```mermaid
-%%{init: {'theme': 'default', 'themeVariables': { 'actorBorder': '#000000', 'actorBkg': '#D6EAF8', 'actorTextColor': '#000000', 'noteBkgColor': '#FCF3CF', 'noteTextColor': '#000000'}}}%%
-
 sequenceDiagram
-    participant Cliente as <font color=blue>Cliente</font>
-    participant Servidor as <font color=green>Servidor</font>
-    participant BD as <font color=purple>Base de Datos</font>
+    actor Cliente
+    participant Servidor
+    participant BD
 
+    %% Estilos personalizados para los actores
+    actor Cliente as Cliente
+    participant Servidor as Servidor
+    participant BD as Base de Datos
+
+    %% Comentario
     Note over Cliente,Servidor: Inicio de la solicitud
 
     Cliente->>Servidor: Solicita datos
