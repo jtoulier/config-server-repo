@@ -39,7 +39,6 @@ sequenceDiagram
     
     alt Datos incompletos
         API Validación-->>Cliente: Error: falta información
-        deactivate API Validación
     else Datos completos
         API Validación->>Motor Crédito: Consulta estado financiero
         loop Verificar múltiples cuentas
