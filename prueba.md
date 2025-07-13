@@ -27,6 +27,16 @@ A continuación se enumeran algunas características importantes:
 
 Este documento demuestra cómo estructurar un archivo Markdown con múltiples elementos de formato. El uso adecuado de estos elementos mejora la legibilidad y comprensión del contenido.
 
+| Categoría       | Subcategoría       | Detalles                                                                 |
+|-----------------|--------------------|--------------------------------------------------------------------------|
+| **Tecnología**  | Hardware            | - CPU: Intel i9<br>- RAM: 32GB<br>- SSD: 1TB                             |
+|                 | Software            | - SO: Linux<br>- IDE: VS Code<br>- Lenguaje: Python                     |
+| **Educación**   | Primaria            | - Grado 1<br>- Grado 2<br>- Grado 3                                      |
+|                 | Secundaria          | - Ciencias:<br>  - Física<br>  - Química<br>- Matemáticas                |
+| **Proyectos**   | Desarrollo Web      | - Frontend:<br>  - HTML<br>  - CSS<br>  - JS<br>- Backend:<br>  - NodeJS |
+|                 | Ciencia de Datos    | - Librerías:<br>  - Pandas<br>  - NumPy<br>  - Scikit-learn              |
+
+
 ```mermaid
 sequenceDiagram
     actor Cliente
